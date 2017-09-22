@@ -39,6 +39,4 @@ class Volunteer
     found_volunteer
   end
 
-  
-
 end
