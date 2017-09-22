@@ -1,0 +1,14 @@
+body  {
+  background-color: cadetblue;
+}
+
+.card {
+  background-color: forestgreen;
+  margin: 5px;
+  padding: 10px;
+}
+
+.card a {
+  text-align: center;
+  color: white;
+}
