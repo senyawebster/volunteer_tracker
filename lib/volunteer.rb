@@ -8,6 +8,10 @@ class Volunteer
     @project_id = attributes.fetch(:project_id)
   end
 
+  def ==(another_volunteer)
+    self.name().==(another_volunteer.name())
+  end
+
   def self.all
     returned_volunteers = DB.exec('SELECT * FROM volunteers;')
     volunteers = []
@@ -18,10 +22,6 @@ class Volunteer
       volunteers.push(Volunteer.new({:name => name, :project_id => project_id.to_i, :id => id.to_i}))
     end
     volunteers
-  end
-
-  def ==(another_volunteer)
-    self.name().==(another_volunteer.name())
   end
 
   def save

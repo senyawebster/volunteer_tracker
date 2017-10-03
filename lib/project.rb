@@ -6,6 +6,10 @@ class Project
     @title = attributes.fetch(:title)
   end
 
+  def ==(another_project)
+    self.title().==(another_project.title()).&self.id.==(another_project.id()).
+  end
+
   def self.all
     returned_projects = DB.exec('SELECT * FROM projects;')
     projects = []
@@ -15,20 +19,6 @@ class Project
       projects.push(Project.new({:title => title, :id => id.to_i}))
     end
     projects
-  end
-
-  # more or less taken from the above .all
-  def volunteers
-    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
-    volunteers = []
-    returned_volunteers.each do |volunteer|
-      volunteers.push(Volunteer.new({:name => volunteer['name'], :project_id => volunteer['project_id'].to_i, :id => volunteer['id'].to_i}))
-    end
-    volunteers
-  end
-
-  def ==(another_project)
-    self.title().==(another_project.title())
   end
 
   def save
@@ -44,6 +34,16 @@ class Project
       end
     end
     found_project
+  end
+
+  # more or less taken from the above .all
+  def volunteers
+    returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
+    volunteers = []
+    returned_volunteers.each do |volunteer|
+      volunteers.push(Volunteer.new({:name => volunteer['name'], :project_id => volunteer['project_id'].to_i, :id => volunteer['id'].to_i}))
+    end
+    volunteers
   end
 
   def update(change)
