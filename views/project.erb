@@ -31,7 +31,7 @@
       <div class="card">
         <h4>New Volunteer:</h4>
         <form action="/new_volunteer/<%= @project.id %>" method="post" class="form-control">
-          <input type="hidden" name="project_<%= @project.id %>">
+          <input type="hidden" name="project_id" value="<%= @project.id %>">
           <label for="name">Volunteer Name</label>
           <input type="text" name="name" class="form-control">
           <!-- <label for="project_id">Volunteer's Project</label> -->

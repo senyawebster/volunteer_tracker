@@ -24,6 +24,10 @@ class Volunteer
     volunteers
   end
 
+  # PG::InvalidTextRepresentation at /new_volunteer/701
+  # ERROR: invalid input syntax for integer: "" LINE 1: ...TO volunteers (name, project_id) VALUES ('Vol 1', '') RETURN...
+  # !!!!! You're passing in an empty string now...why??
+
   def save
     result = DB.exec("INSERT INTO volunteers (name, project_id) VALUES ('#{@name}', #{@project_id}) RETURNING id;")
     @id = result.first().fetch('id').to_i
