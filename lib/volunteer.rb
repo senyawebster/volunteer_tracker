@@ -29,11 +29,12 @@ class Volunteer
     @id = result.first().fetch('id').to_i
   end
 
-  def self.find(name)
+# switch these function to find by ID not NAME, duhhhh
+  def self.find(id)
     found_volunteer = nil
     Volunteer.all().each() do |volunteer|
-      if volunteer.name().==(name)
-        found_volunteer = volunteer.id
+      if volunteer.id() == (id)
+        found_volunteer = volunteer
       end
     end
     found_volunteer

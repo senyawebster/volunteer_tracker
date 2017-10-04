@@ -7,7 +7,7 @@ class Project
   end
 
   def ==(another_project)
-    self.title().==(another_project.title()).&self.id.==(another_project.id()).
+    self.title().==(another_project.title())
   end
 
   def self.all
@@ -26,17 +26,17 @@ class Project
     @id = result.first().fetch('id').to_i
   end
 
-  def self.find(title)
+  def self.find(id)
     found_project = nil
     Project.all().each() do |project|
-      if project.title().==(title)
-        found_project = project.id
+      if project.id() == (id)
+        found_project = project
       end
     end
     found_project
   end
 
-  # more or less taken from the above .all
+  # # more or less taken from the above .all
   def volunteers
     returned_volunteers = DB.exec("SELECT * FROM volunteers WHERE project_id = #{@id}")
     volunteers = []
