@@ -27,7 +27,7 @@ end
 # WORK ON ME !!!!!!!!!!!!!!
 post('/new_volunteer/:id') do
   name = params.fetch("name")
-  volunteer = Volunteer.new({:name => name, :id => nil, :project_id => '#{@project_id}'})
+  volunteer = Volunteer.new({:name => name, :id => nil, :project_id => @project_id})
   volunteer.save()
   @projects = Project.all()
   @volunteers = Volunteer.all()
