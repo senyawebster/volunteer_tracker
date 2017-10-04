@@ -26,11 +26,13 @@ end
 
 # WORK ON ME !!!!!!!!!!!!!!
 post('/new_volunteer/:id') do
+  @project = Project.find(params.fetch("id").to_i())
+  project_id = @project.id
   name = params.fetch("name")
   volunteer = Volunteer.new({:name => name, :id => nil, :project_id => @project_id})
   volunteer.save()
-  @projects = Project.all()
-  @volunteers = Volunteer.all()
+  # @projects = Project.all()
+  # @volunteers = Volunteer.all()
   erb(:index)
 end
 # WORK ON ME !!!!!!!!!!!!!!
