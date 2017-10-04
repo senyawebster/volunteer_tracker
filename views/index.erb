@@ -24,25 +24,5 @@
     </div>
   </div>
 
-  <div class="col-sm-6">
-    <div class="card">
-      <h4>New Volunteer:</h4>
-      <form action="/new_volunteer" method="post" class="form-control">
-        <label for="name">Volunteer Name</label>
-        <input type="text" name="name" class="form-control">
-        <!-- <label for="project_id">Volunteer's Project</label> -->
-        <br>
-        <button type="submit" class="button btn-success form-control">Add New Volunteer</button>
-      </form>
-    </div>
-    <div class="card">
-      <h3>Current Volunteers:</h3>
-      <br>
-      <ul>
-        <% @volunteers.each do |volunteer| %>
-        <li><a href="/volunteer/<%= volunteer.id()%>"><%= volunteer.name() %></a> </li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
+
 </div>

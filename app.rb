@@ -24,7 +24,8 @@ post('/new_project') do
   erb(:index)
 end
 
-post('/new_volunteer') do
+# WORK ON ME !!!!!!!!!!!!!!
+post('/new_volunteer/:id') do
   name = params.fetch("name")
   volunteer = Volunteer.new({:name => name, :id => nil, :project_id => '#{@project_id}'})
   volunteer.save()
@@ -32,10 +33,12 @@ post('/new_volunteer') do
   @volunteers = Volunteer.all()
   erb(:index)
 end
+# WORK ON ME !!!!!!!!!!!!!!
 
 get('/project/:id') do
   @project = Project.find(params.fetch('id').to_i())
-  binding.pry
+  @projects = Project.all()
+  @volunteers = Volunteer.all()
   erb(:project)
 end
 
