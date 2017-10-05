@@ -44,4 +44,9 @@ class Volunteer
     found_volunteer
   end
 
+  def update(change)
+    @name = change[:name]
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
 end

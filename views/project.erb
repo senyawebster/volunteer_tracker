@@ -8,7 +8,7 @@
 
 
       <div class="col col-md-6">
-        <form action="/project/<%= @project.id() %> " method="post">
+        <form action="/project/<%= @project.id() %>" method="post">
           <input type="hidden" name="_method" value="patch">
           <button type="submit" class="btn btn-warning">Rename</button>
           <input type="text" name="rename">
@@ -17,9 +17,9 @@
 
 
       <div class="col col-md-3">
-        <form class="" action="/project/<%= @project.id() %> " method="post">
+        <form class="" action="/project/<%= @project.id() %>" method="post">
           <input type="hidden" name="_method" value="delete">
-          <button type="submit" class="btn btn-danger">Delete Store</button>
+          <button type="submit" class="btn btn-danger">Delete</button>
         </form>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <% if @volunteers.any? %>
           <ul>
             <% @volunteers.each do |volunteer| %>
-            <li><a href="/volunteer/<%= volunteer.id()%>"><%= volunteer.name() %></a> </li>
+            <li><a href="/volunteer/<%= volunteer.id %>"><%= volunteer.name() %></a> </li>
             <% end %>
           </ul>
         <% else %>

@@ -42,6 +42,20 @@ get('/project/:id') do
   erb(:project)
 end
 
+get('/volunteer/:id') do
+  @volunteers = Volunteer.all
+  @volunteer = Volunteer.find(params.fetch("id").to_i())
+  erb(:volunteer)
+end
+
+patch('/volunteer/:id') do
+  rename = params.fetch('rename')
+  @volunteer = Volunteer.find(params.fetch('id').to_i())
+  @volunteer.update({:name => rename})
+  @volunteer = Volunteer.all()
+  redirect '/'
+end
+
 # project page delete & patch
 delete '/project/:id' do
   @project = Project.find(params.fetch('id').to_i())
